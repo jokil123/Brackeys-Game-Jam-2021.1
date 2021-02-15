@@ -15,5 +15,9 @@ public static class Utility
     {
         return new Vector2(vector.x, vector.z);
     }
-}
 
+    public static void LineRel(GameObject transformGameObject, Vector3 vector, Color color)
+    {
+        Debug.DrawLine(transformGameObject.transform.position, transformGameObject.transform.position + vector, color, Time.deltaTime, false);
+    }
+}
