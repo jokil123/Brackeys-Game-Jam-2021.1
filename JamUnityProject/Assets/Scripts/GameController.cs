@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController1 : MonoBehaviour
+public class GameController : MonoBehaviour
 {
     [SerializeField]
     private List<GameObject> playerShips = new List<GameObject>();
