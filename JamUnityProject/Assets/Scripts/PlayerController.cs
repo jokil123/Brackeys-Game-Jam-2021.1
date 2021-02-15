@@ -6,48 +6,40 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRigidbody;
 
-    [SerializeField]
-    private Transform thrustOffset;
+    public bool isActive;
+
     [SerializeField]
     private float forceScale;
+
+    [SerializeField]
+    private float speed;
+    [SerializeField]
+    private float turnspeed;
 
     void Awake()
     {
         playerRigidbody = gameObject.GetComponent<Rigidbody>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Debug.DrawLine(Vector3.zero, transform.TransformVector(Vector3.right), Color.white, Time.deltaTime, false);
-    }
-
     void FixedUpdate()
     {
-        Thrust(GetRelativeInputDirection(GetInputDirection()));
+        if (isActive)
+        {
+            Thrust(Input.GetAxis("Vertical") * speed);
+            TurnTorque(Input.GetAxis("Horizontal") * turnspeed);
+        }
     }
 
-    void Thrust(Vector2 direction)
+    void Thrust(float strength)
     {
-        Vector3 moveVector = Utility.V2toV3(direction) * forceScale;
-        playerRigidbody.AddForceAtPosition(moveVector, thrustOffset.position);
+        Vector3 thrustDireciton = transform.TransformVector(Vector3.right) * strength;
+        Utility.LineRel(gameObject, thrustDireciton, Color.green);
+        playerRigidbody.AddForce(thrustDireciton);
     }
 
-    Vector2 GetRelativeInputDirection(Vector2 globalVector)
+    void TurnTorque(float torque)
     {
-        Utility.LineRel(gameObject, globalVector, Color.red);
-        Utility.LineRel(gameObject, transform.TransformVector(globalVector), Color.red);
-        return transform.TransformVector(globalVector);
-    }
-
-    Vector2 GetInputDirection()
-    {
-        return new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        Vector3 torqueDirection = new Vector3(0, torque, 0);
+        playerRigidbody.AddTorque(torqueDirection);
     }
 }
