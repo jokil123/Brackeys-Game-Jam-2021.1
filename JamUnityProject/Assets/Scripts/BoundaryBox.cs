@@ -25,6 +25,7 @@ public class BoundaryBox : MonoBehaviour
 
     private void UpdateList()
     {
+        allCollisionObjects.Clear();
         foreach (GameObject item in boundaryChildren)
         {
             List<GameObject> list = new List<GameObject>(item.GetComponent<BoundaryChild>().collisionObjects);

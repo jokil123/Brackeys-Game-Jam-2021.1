@@ -31,14 +31,31 @@ public class Goal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (inGoal)
+        bool shipInside = false;
+        foreach (GameObject item in collisionObjects)
         {
-            Countdown();
+            if (item == ship)
+            {
+                shipInside = true;
+            }
+        }
+
+        if (shipInside)
+        {
+            if (!gameObject.GetComponent<BoundaryBox>().IsColliding(ship))
+            {
+                Countdown();
+            }
+            else
+            {
+                parkingTimeCurrent = parkingTime;
+            }
         }
         else
         {
             parkingTimeCurrent = parkingTime;
         }
+
 
         if (parkingTimeCurrent <= 0)
         {
