@@ -14,20 +14,17 @@ public class Goal : MonoBehaviour
     private bool inGoal;
 
 
+    public HashSet<GameObject> collisionObjects = new HashSet<GameObject>();
+
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == ship)
-        {
-            inGoal = true;
-        }
+        collisionObjects.Add(other.gameObject);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == ship)
-        {
-            inGoal = false;
-        }
+        collisionObjects.Remove(other.gameObject);
     }
 
 
