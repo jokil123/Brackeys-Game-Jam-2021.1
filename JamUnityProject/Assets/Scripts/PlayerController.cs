@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRigidbody;
 
+    public ParticleSystem particles;
+
     public bool isActive;
 
     [SerializeField]
@@ -35,6 +37,16 @@ public class PlayerController : MonoBehaviour
         Vector3 thrustDireciton = transform.TransformVector(Vector3.right) * strength;
         Utility.LineRel(gameObject, thrustDireciton, Color.green);
         playerRigidbody.AddForce(thrustDireciton);
+
+        if (strength != 0)
+        {
+            particles.emissionRate = 10;
+        }
+        else
+        {
+            particles.emissionRate = 0;
+        }
+
     }
 
     void TurnTorque(float torque)

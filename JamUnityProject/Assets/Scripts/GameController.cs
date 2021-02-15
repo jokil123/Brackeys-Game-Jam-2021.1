@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour
     void SwitchPlayer()
     {
         playerShips[shipIndex].GetComponent<PlayerController>().isActive = false;
+        playerShips[shipIndex].GetComponent<PlayerController>().particles.emissionRate = 0;
         shipIndex++;
         if (shipIndex >= playerShips.Count)
         {

@@ -11,6 +11,9 @@ public class Goal : MonoBehaviour
     private float parkingTime;
     private float parkingTimeCurrent;
 
+    [SerializeField]
+    private Animation clearAnim;
+
     private bool inGoal;
 
 
@@ -59,7 +62,7 @@ public class Goal : MonoBehaviour
 
         if (parkingTimeCurrent <= 0)
         {
-            Debug.LogWarning("Level Win");
+            InGoal();
         }
     }
 
@@ -67,5 +70,11 @@ public class Goal : MonoBehaviour
     {
         parkingTimeCurrent -= Time.deltaTime;
         //Debug.Log(parkingTimeCurrent);
+    }
+
+    private void InGoal()
+    {
+        Debug.Log("Level Win");
+        clearAnim.Play();
     }
 }
