@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRigidbody;
 
     public ParticleSystem particles;
+    public float emmisionRate = 10f;
 
     public bool isActive;
 
@@ -40,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
         if (strength != 0)
         {
-            particles.emissionRate = 10;
+            particles.emissionRate = emmisionRate;
         }
         else
         {
