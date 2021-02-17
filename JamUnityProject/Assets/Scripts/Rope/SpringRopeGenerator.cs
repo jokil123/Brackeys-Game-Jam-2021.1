@@ -9,36 +9,97 @@ public class SpringRopeGenerator : MonoBehaviour
     public Transform starPos;
     public Transform endPos;
 
-    private GameObject startPoint;
-    private List<GameObject> points = new List<GameObject>();
-    private GameObject endPoint;
+    public float ropeWidth;
+    public Material ropeMaterial;
 
-    // Start is called before the first frame update
-    void Start()
+    public float segmentDrag;
+    public float segmentMass;
+
+    public float springS;
+    public float damperS;
+    public float minDistanceS;
+    public float maxDistanceS;
+
+    List<GameObject> ropePoints = new List<GameObject>();
+
+    private void Start()
     {
-        startPoint = new GameObject();
-        points.Add(startPoint);
-        
-        Rigidbody rgbd = startPoint.AddComponent<Rigidbody>();
-        rgbd.isKinematic = true;
+        ropePoints.AddRange(GeneratePoints(segments, starPos, endPos));
+        AddComponents(ropePoints);
+    }
 
-        for (int i = 0; i<segments; i++)
+    private void Update()
+    {
+
+        for (int i = 0; i < segments - 1; i++)
         {
-            GameObject point = new GameObject();
-            point.transform.parent = startPoint.transform;
-            
-            point.AddComponent<Rigidbody>();
-            SpringJoint spring = point.AddComponent<SpringJoint>();
-
-            spring.connectedBody = points[i].GetComponent<Rigidbody>();
-
-            points.Add(point);
+            Debug.DrawLine(ropePoints[i].transform.position, ropePoints[i + 1].transform.position, Color.red, Time.deltaTime, false);
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void AddComponents(List<GameObject> objects)
     {
-        
+        for (int i = 0; i < objects.Count; i++)
+        {
+            Rigidbody rgbd;
+            rgbd = objects[i].AddComponent<Rigidbody>();
+            rgbd.drag = segmentDrag;
+            rgbd.mass = segmentMass;
+        }
+
+        objects[0].GetComponent<Rigidbody>().isKinematic = true;
+        objects[0].transform.parent = starPos;
+
+        objects[objects.Count - 1].GetComponent<Rigidbody>().isKinematic = true;
+        objects[objects.Count - 1].transform.parent = endPos;
+
+        for (int i = 0; i < objects.Count - 1; i++)
+        {
+            GameObject item = objects[i];
+            SpringJoint spring = item.AddComponent<SpringJoint>();
+            spring.connectedBody = objects[i + 1].GetComponent<Rigidbody>();
+            spring.spring = springS;
+            spring.damper = damperS;
+            spring.minDistance = minDistanceS;
+            spring.maxDistance = maxDistanceS;
+
+            RopeSegment segmentModel = item.AddComponent<RopeSegment>();
+            segmentModel.start = item.transform;
+            segmentModel.end = objects[i + 1].transform;
+            segmentModel.width = ropeWidth;
+            segmentModel.parent = gameObject;
+            segmentModel.material = ropeMaterial;
+            segmentModel.CustomStart();
+        }
+    }
+
+    private List<GameObject> GeneratePoints(int ammount, Transform start, Transform end)
+    {
+        GameObject parent = gameObject;
+
+        List<GameObject> points = new List<GameObject>();
+
+        for (int i = 0; i < ammount; i++)
+        {
+            GameObject point = new GameObject();
+
+            point.transform.position = GetPointInbetween((float)i / (ammount - 1), start, end);
+
+            point.transform.parent = parent.transform;
+
+            points.Add(point);
+        }
+
+        return points;
+    }
+
+    private Vector3 GetPointInbetween(float progress, Transform start, Transform end)
+    {
+        Vector3 startEndLine = end.position - start.position;
+
+        Vector3 pointPosition = startEndLine * progress + start.position;
+
+        Debug.DrawLine(start.position, pointPosition, Color.white, Time.deltaTime, false);
+        return pointPosition;
     }
 }
