@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rope : MonoBehaviour
+public class TwoPointZylinder : MonoBehaviour
 {
+    
     public float ropeWidth;
 
     public Transform start;
@@ -13,7 +14,7 @@ public class Rope : MonoBehaviour
 
     private void Start()
     {
-        rope = GenerateCylinder(start.position, end.position, ropeWidth);
+        rope = GenerateCylinder();
     }
 
 
@@ -56,7 +57,7 @@ public class Rope : MonoBehaviour
         return rotation;
     }
 
-    private GameObject GenerateCylinder(Vector3 startPosition, Vector3 endPosition, float width)
+    private GameObject GenerateCylinder()
     {
         GameObject cylinderObject;
         GameObject cylinderModel;
@@ -68,13 +69,7 @@ public class Rope : MonoBehaviour
         cylinderModel.transform.parent = cylinderObject.transform;
         cylinderObject.transform.parent = gameObject.transform;
         
-
         cylinderModel.transform.Rotate(new Vector3(0, 0, 90));
-        
-        cylinderObject.transform.position = CalculatePosition(startPosition, endPosition);
-        cylinderModel.transform.localScale = CalculateScale(startPosition, endPosition, width);
-        cylinderObject.transform.rotation = CalculateRotation(startPosition, endPosition);
-
         return cylinderObject;
     }
 
