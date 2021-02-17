@@ -13,6 +13,7 @@ public class SpringRopeGenerator : MonoBehaviour
     public Material ropeMaterial;
 
     public float segmentDrag;
+    public float segmentMass;
 
     public float springS;
     public float damperS;
@@ -43,6 +44,7 @@ public class SpringRopeGenerator : MonoBehaviour
             Rigidbody rgbd;
             rgbd = objects[i].AddComponent<Rigidbody>();
             rgbd.drag = segmentDrag;
+            rgbd.mass = segmentMass;
         }
 
         objects[0].GetComponent<Rigidbody>().isKinematic = true;

@@ -34,7 +34,7 @@ public class RopeSegment : MonoBehaviour
         cylinderObject = new GameObject();
         cylinderModel = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
         cylinderModel.GetComponent<MeshRenderer>().material = material;
-        //Destroy(cylinderObject.GetComponentInChildren<Collider>());
+        Destroy(cylinderModel.GetComponent<Collider>());
 
         cylinderModel.transform.parent = cylinderObject.transform;
         cylinderObject.transform.parent = parent.transform;
