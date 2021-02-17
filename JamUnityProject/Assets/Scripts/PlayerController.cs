@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isActive)
+        if (isActive && GameMaster.gameController.controlIsEnabled)
         {
             Thrust(Input.GetAxis("Vertical") * speed);
             TurnTorque(Input.GetAxis("Horizontal") * turnspeed);

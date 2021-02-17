@@ -9,11 +9,17 @@ public class GameController : MonoBehaviour
     private List<GameObject> playerShips = new List<GameObject>();
     public int shipIndex = 0;
     public CinemachineVirtualCamera cinemachine;
+    public bool controlIsEnabled = true;
+
+    private void Start()
+    {
+        GameMaster.gameController = this;   
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && controlIsEnabled)
         {
             SwitchPlayer();
         }

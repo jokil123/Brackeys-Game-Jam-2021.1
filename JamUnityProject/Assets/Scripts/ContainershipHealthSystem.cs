@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ContainershipHealthSystem : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class ContainershipHealthSystem : MonoBehaviour
     }
 
     public Slider slider;
+    public Animation gameOverAnim;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +41,9 @@ public class ContainershipHealthSystem : MonoBehaviour
     void GameOver()
     {
         Debug.Log("GameOver!");
+        gameOverAnim.Play();
+        GameMaster.gameController.controlIsEnabled = false;
+        StartCoroutine(ReloadScene());
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -48,5 +53,11 @@ public class ContainershipHealthSystem : MonoBehaviour
             Debug.Log("Collision!");
             Health -= 10;
         }
+    }
+
+    public IEnumerator ReloadScene()
+    {
+        yield return new WaitForSeconds(4);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
