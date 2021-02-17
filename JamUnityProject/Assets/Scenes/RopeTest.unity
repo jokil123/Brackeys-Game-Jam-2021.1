@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 84388504}
-  - component: {fileID: 84388503}
+  - component: {fileID: 84388505}
   m_Layer: 0
   m_Name: RopeObject
   m_TagString: Untagged
@@ -140,20 +140,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &84388503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 84388502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f06a30932d1486b42b52f4950bc8d651, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  testStart: {fileID: 2034311610}
-  testEnd: {fileID: 768382955}
 --- !u!4 &84388504
 Transform:
   m_ObjectHideFlags: 0
@@ -168,6 +154,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &84388505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 84388502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f188235637e2ba48b860fe055e45e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  segments: 10
+  starPos: {fileID: 2034311611}
+  endPos: {fileID: 768382956}
+  ropeWidth: 0.1
+  ropeMaterial: {fileID: 0}
+  segmentDrag: 1
+  springS: 1000
+  damperS: 100
+  minDistanceS: 0
+  maxDistanceS: 0
 --- !u!1 &768382955
 GameObject:
   m_ObjectHideFlags: 0

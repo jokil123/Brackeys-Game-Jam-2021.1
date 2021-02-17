@@ -5,42 +5,41 @@ using UnityEngine;
 public class RopeSegment : MonoBehaviour
 {
     GameObject segment;
-    Transform start;
-    Transform end;
 
-    float width;
+    public GameObject parent;
+    public Transform start;
+    public Transform end;
 
-    public RopeSegment(Transform ropeStart, Transform ropeEnd, float ropeWidth)
+    public float width;
+    public Material material;
+
+    void Update()
     {
-        start = ropeStart;
-        end = ropeEnd;
-        width = ropeWidth;
+        if (segment != null)
+        {
+            UpdateCylinder();
+        }
+    }
 
+    public void CustomStart()
+    {
         segment = GenerateCylinder();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        Debug.Log("Update");
-        UpdateCylinder();
-    }
-
-    private GameObject GenerateCylinder()
+    public GameObject GenerateCylinder()
     {
         GameObject cylinderObject;
         GameObject cylinderModel;
 
         cylinderObject = new GameObject();
         cylinderModel = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-        Destroy(cylinderObject.GetComponent<Collider>());
+        cylinderModel.GetComponent<MeshRenderer>().material = material;
+        //Destroy(cylinderObject.GetComponentInChildren<Collider>());
 
         cylinderModel.transform.parent = cylinderObject.transform;
-        //cylinderObject.transform.parent = gameObject.transform;
+        cylinderObject.transform.parent = parent.transform;
 
-        cylinderModel.transform.Rotate(new Vector3(0, 0, 90));
-
-        Debug.Log("create");
+        cylinderModel.transform.Rotate(new Vector3(90, 0, 0));
 
         return cylinderObject;
     }
@@ -78,8 +77,6 @@ public class RopeSegment : MonoBehaviour
     private Quaternion CalculateRotation(Vector3 startPosition, Vector3 endPosition)
     {
         Vector3 direction = (startPosition - endPosition).normalized;
-
-        direction = Quaternion.AngleAxis(90, Vector3.up) * direction;
 
         Quaternion rotation = Quaternion.LookRotation(direction);
 
