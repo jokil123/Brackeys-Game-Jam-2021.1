@@ -1106,7 +1106,7 @@ MonoBehaviour:
   starPos: {fileID: 1505126279}
   endPos: {fileID: 2113861717629012821}
   ropeWidth: 0.025
-  ropeMaterial: {fileID: 0}
+  ropeMaterial: {fileID: 2100000, guid: fb07a56e6e1013747907fcf97e4f060c, type: 2}
   segmentDrag: 10
   segmentMass: 40
   springS: 100000
@@ -1129,7 +1129,7 @@ MonoBehaviour:
   starPos: {fileID: 1637194145099490348}
   endPos: {fileID: 2113861717629012822}
   ropeWidth: 0.025
-  ropeMaterial: {fileID: 0}
+  ropeMaterial: {fileID: 2100000, guid: fb07a56e6e1013747907fcf97e4f060c, type: 2}
   segmentDrag: 10
   segmentMass: 40
   springS: 100000
@@ -1427,7 +1427,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.94905216, y: 1}
+    m_SensorSize: {x: 1.900474, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
