@@ -57,7 +57,7 @@ public class RopeSegment : MonoBehaviour
 
         position = (startPosition + endPosition) / 2;
 
-        Debug.Log("Pos"); 
+        //Debug.Log("Pos"); 
         return position;
     }
 
@@ -70,7 +70,7 @@ public class RopeSegment : MonoBehaviour
 
         scale.y = (endPosition - startPosition).magnitude / 2;
 
-        Debug.Log("Scale");
+        //Debug.Log("Scale");
         return scale;
     }
 
@@ -80,7 +80,7 @@ public class RopeSegment : MonoBehaviour
 
         Quaternion rotation = Quaternion.LookRotation(direction);
 
-        Debug.Log("Rot");
+        //Debug.Log("Rot");
         return rotation;
     }
 }
