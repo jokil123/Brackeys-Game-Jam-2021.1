@@ -531,6 +531,11 @@ PrefabInstance:
       propertyPath: clearAnim
       value: 
       objectReference: {fileID: 994003702}
+    - target: {fileID: 7362828180177185230, guid: aff91e5a28f17ec41aeb5e9053160ff2,
+        type: 3}
+      propertyPath: nextLevelIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7362828180177185231, guid: aff91e5a28f17ec41aeb5e9053160ff2,
         type: 3}
       propertyPath: m_Size.y

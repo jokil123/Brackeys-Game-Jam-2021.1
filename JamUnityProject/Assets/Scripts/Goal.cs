@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Goal : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class Goal : MonoBehaviour
     private Animation clearAnim;
 
     private bool inGoal;
+
+    [SerializeField]
+    private int nextLevelIndex;
 
 
     public HashSet<GameObject> collisionObjects = new HashSet<GameObject>();
@@ -76,5 +80,12 @@ public class Goal : MonoBehaviour
     {
         Debug.Log("Level Win");
         clearAnim.Play();
+        StartCoroutine(LoadNextScene());
+    }
+
+    public IEnumerator LoadNextScene()
+    {
+        yield return new WaitForSeconds(2.417f);
+        SceneManager.LoadScene(nextLevelIndex);
     }
 }
