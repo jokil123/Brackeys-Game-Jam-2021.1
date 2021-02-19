@@ -42,6 +42,13 @@ public class PlayerController : MonoBehaviour
         if (strength != 0)
         {
             particles.emissionRate = emmisionRate;
+            if (strength>0)
+            {
+                particles.startSpeed = 1;
+            } else
+            {
+                particles.startSpeed = -1;
+            }
         }
         else
         {
