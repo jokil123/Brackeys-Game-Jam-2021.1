@@ -3047,6 +3047,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ----- UI -----
       objectReference: {fileID: 0}
+    - target: {fileID: 5099181807097308091, guid: 933936c7bd6b2694e9622f8fe3e91cae,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099181807097347685, guid: 933936c7bd6b2694e9622f8fe3e91cae,
+        type: 3}
+      propertyPath: m_Text
+      value: Level 4 cleared
+      objectReference: {fileID: 0}
     - target: {fileID: 5099181807547347771, guid: 933936c7bd6b2694e9622f8fe3e91cae,
         type: 3}
       propertyPath: m_AnchorMax.y
