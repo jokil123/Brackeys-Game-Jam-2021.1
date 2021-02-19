@@ -6,7 +6,8 @@ public enum SizeType
 {
     Scale,
     BoxCollider,
-    ContainerField
+    ContainerField,
+    Plane
 }
 
 public class OutlineMarkings : MonoBehaviour
@@ -25,16 +26,19 @@ public class OutlineMarkings : MonoBehaviour
 
     void Start()
     {
-        //size = GetBoundingSize();
-        //GenerateMarkings();
+        size = GetOutlineSize();
+        position = GetOutlinePosition();
+        GenerateMarkings();
     }
 
-    private void Update()
+    /*
+    private void Update() // Disable when building
     {
         size = GetOutlineSize();
         position = GetOutlinePosition();
         GenerateMarkings();
     }
+    */
 
     Vector3 GetOutlinePosition()
     {
@@ -48,7 +52,10 @@ public class OutlineMarkings : MonoBehaviour
                 position = gameObject.GetComponent<BoxCollider>().center;
                 break;
             case SizeType.ContainerField:
-                position = GetComponent<ContainerFieldCreator>().GetBoxSize() / 2;
+                position = gameObject.GetComponent<ContainerFieldCreator>().GetBoxSize() / 2;
+                break;
+            case SizeType.Plane:
+                position = Vector3.zero;
                 break;
         }
 
@@ -67,7 +74,12 @@ public class OutlineMarkings : MonoBehaviour
                 size = gameObject.GetComponent<BoxCollider>().size;
                 break;
             case SizeType.ContainerField:
-                size = GetComponent<ContainerFieldCreator>().GetBoxSize();
+                size = gameObject.GetComponent<ContainerFieldCreator>().GetBoxSize();
+                break;
+            case SizeType.Plane:
+                size.x = gameObject.transform.localScale.x * 10;
+                size.y = 1;
+                size.z = gameObject.transform.localScale.z * 10;
                 break;
         }
 

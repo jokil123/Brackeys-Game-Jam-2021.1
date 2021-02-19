@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: DangerZone
+  m_Shader: {fileID: -6465566751694194690, guid: 883f76960f611cd4d9364ce3b1106219,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Boolean_1fc89d5fa463426eb901f7942ecb837e: 0
+    - Vector1_9e1cc06115764efabb00dceaf018bcf3: 57.18
+    m_Colors:
+    - Color_91aefd58874e48f283f8e6f12e87cb58: {r: 1, g: 0.8279877, b: 0, a: 0}
+    - Color_df62bb8d7d7349e5843b0c8653482475: {r: 0, g: 0, b: 0, a: 0}
+    - Vector2_59b68d4ec6354bf68a2ae8a60be2995a: {r: 1, g: 1, b: 0, a: 0}
+  m_BuildTextureStacks: []
