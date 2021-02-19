@@ -25,17 +25,28 @@ public class ContainershipHealthSystem : MonoBehaviour
     }
 
     public Slider slider;
+    public Slider secondarySlider;
+    public Text hpText;
     public Animation gameOverAnim;
 
-    // Start is called before the first frame update
     void Start()
     {
         UpdateUI();
+        secondarySlider.value = Health;
+    }
+
+    void Update()
+    {
+        if (secondarySlider.value > slider.value)
+        {
+            secondarySlider.value -= 0.1f;
+        }
     }
 
     void UpdateUI()
     {
         slider.value = Health;
+        hpText.text = $"HP: {Health}";
     }
 
     void GameOver()
@@ -50,7 +61,6 @@ public class ContainershipHealthSystem : MonoBehaviour
     {
         if (collision.gameObject.tag == "Obstacle" || collision.gameObject.tag == "Player")
         {
-            Debug.Log("Collision!");
             Health -= 10;
         }
     }

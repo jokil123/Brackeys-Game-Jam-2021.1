@@ -11,9 +11,9 @@ public class GameController : MonoBehaviour
     public CinemachineVirtualCamera cinemachine;
     public bool controlIsEnabled = true;
 
-    private void Start()
+    private void Awake()
     {
-        GameMaster.gameController = this;   
+        GameMaster.gameController = this;
     }
 
     // Update is called once per frame
