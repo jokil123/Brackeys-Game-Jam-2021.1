@@ -188,12 +188,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7362828180177185229}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66df922a43004df4cbec6738bd5e141c, type: 3}
+  m_Script: {fileID: 11500000, guid: 293123a2ae52b2340aa75c07c2f1d7f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ship: {fileID: 0}
   parkingTime: 1
   clearAnim: {fileID: 0}
+  nextLevelIndex: 0
 --- !u!114 &7362828180177185219
 MonoBehaviour:
   m_ObjectHideFlags: 0
