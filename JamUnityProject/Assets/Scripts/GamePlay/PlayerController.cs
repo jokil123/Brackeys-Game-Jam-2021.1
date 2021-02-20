@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
     private float forceScale;
 
     [SerializeField]
+    private float particleSpeed = 1;
+
+    [SerializeField]
     private float speed;
     [SerializeField]
     private float turnspeed;
@@ -44,10 +47,10 @@ public class PlayerController : MonoBehaviour
             particles.emissionRate = emmisionRate;
             if (strength>0)
             {
-                particles.startSpeed = 1;
+                particles.startSpeed = particleSpeed;
             } else
             {
-                particles.startSpeed = -1;
+                particles.startSpeed = -particleSpeed;
             }
         }
         else
