@@ -276,7 +276,9 @@ MonoBehaviour:
   ship: {fileID: 0}
   parkingTime: 1
   clearAnim: {fileID: 0}
-  nextLevelIndex: 0
+  goalSlideranim: {fileID: 0}
+  slider: {fileID: 0}
+  nextLevelIndex: 1
 --- !u!114 &7362828180177185219
 MonoBehaviour:
   m_ObjectHideFlags: 0
