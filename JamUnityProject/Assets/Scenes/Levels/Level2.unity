@@ -3600,7 +3600,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -4195,6 +4195,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4520247953740166399, guid: 933936c7bd6b2694e9622f8fe3e91cae,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5099181806082297382, guid: 933936c7bd6b2694e9622f8fe3e91cae,
         type: 3}
       propertyPath: m_Sprite
@@ -4273,7 +4278,7 @@ PrefabInstance:
     - target: {fileID: 5099181807097308091, guid: 933936c7bd6b2694e9622f8fe3e91cae,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5099181807097347685, guid: 933936c7bd6b2694e9622f8fe3e91cae,
         type: 3}
@@ -4314,6 +4319,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Controls
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099181807672793565, guid: 933936c7bd6b2694e9622f8fe3e91cae,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5099181807672793565, guid: 933936c7bd6b2694e9622f8fe3e91cae,
         type: 3}
@@ -4385,6 +4395,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5399361390569149674, guid: 933936c7bd6b2694e9622f8fe3e91cae,
+        type: 3}
+      propertyPath: goal
+      value: 
+      objectReference: {fileID: 2040805899}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 933936c7bd6b2694e9622f8fe3e91cae, type: 3}
 --- !u!224 &966634400 stripped
@@ -5082,7 +5097,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.6286645, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -9491,6 +9506,12 @@ PrefabInstance:
 --- !u!4 &2040805898 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7362828180177185218, guid: aff91e5a28f17ec41aeb5e9053160ff2,
+    type: 3}
+  m_PrefabInstance: {fileID: 2040805897}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2040805899 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7362828180177185229, guid: aff91e5a28f17ec41aeb5e9053160ff2,
     type: 3}
   m_PrefabInstance: {fileID: 2040805897}
   m_PrefabAsset: {fileID: 0}
