@@ -26,10 +26,10 @@ public class GoalMarker : MonoBehaviour
         if (screenpos.z > 0 && screenpos.x >0 && screenpos.x<Screen.width && screenpos.y>0 && screenpos.y<Screen.height)
         {
             goalArrow.transform.position = new Vector3(Screen.width+100,Screen.height+100,0);
-            Debug.Log("In screen");
+            //Debug.Log("In screen");
         } else
         {
-            Debug.Log("Off screen");
+            //Debug.Log("Off screen");
 
             //Check if its behind the camera, if so flip it
             if (screenpos.z<0)

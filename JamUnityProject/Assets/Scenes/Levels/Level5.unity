@@ -11852,7 +11852,6 @@ GameObject:
   - component: {fileID: 1243441697}
   - component: {fileID: 1243441696}
   - component: {fileID: 1243441695}
-  - component: {fileID: 1243441694}
   - component: {fileID: 1243441693}
   - component: {fileID: 1243441692}
   - component: {fileID: 1243441698}
@@ -11929,18 +11928,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1243441694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1243441691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa19fb94f697a9e459a22687c63f7194, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!81 &1243441695
 AudioListener:
   m_ObjectHideFlags: 0
@@ -12978,7 +12965,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.4771929, y: 1}
+    m_SensorSize: {x: 1.7015915, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

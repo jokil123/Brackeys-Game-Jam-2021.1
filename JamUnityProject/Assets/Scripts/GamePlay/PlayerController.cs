@@ -17,10 +17,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float particleSpeed = 1;
 
-    [SerializeField]
-    private float speed;
-    [SerializeField]
-    private float turnspeed;
+    public float speed;
+    public float turnspeed;
 
     void Awake()
     {
