@@ -19,7 +19,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && controlIsEnabled)
+        if (Input.GetButtonDown("Switch") && controlIsEnabled)
         {
             SwitchPlayer();
         }
