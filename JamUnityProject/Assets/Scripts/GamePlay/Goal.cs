@@ -16,6 +16,12 @@ public class Goal : MonoBehaviour
     [SerializeField]
     private Animation clearAnim;
 
+    [SerializeField]
+    private Animation goalSlideranim;
+
+    [SerializeField]
+    private Slider slider;
+
     private bool inGoal;
 
     [SerializeField]
@@ -36,6 +42,13 @@ public class Goal : MonoBehaviour
     }
 
 
+    void Start()
+    {
+        slider.maxValue = parkingTime;
+        slider.value = 0;
+        slider.gameObject.SetActive(false);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -50,6 +63,12 @@ public class Goal : MonoBehaviour
 
         if (shipInside)
         {
+            if (!slider.gameObject.activeSelf)
+            {
+                slider.gameObject.SetActive(true);
+                goalSlideranim.Play();
+            }
+
             if (!gameObject.GetComponent<BoundaryBox>().IsColliding(ship))
             {
                 Countdown();
@@ -62,6 +81,10 @@ public class Goal : MonoBehaviour
         else
         {
             parkingTimeCurrent = parkingTime;
+            if (slider.gameObject.activeSelf)
+            {
+                slider.gameObject.SetActive(false);
+            }
         }
 
 
@@ -71,9 +94,9 @@ public class Goal : MonoBehaviour
         }
     }
 
-    private void Countdown()
-    {
+    private void Countdown() {
         parkingTimeCurrent -= Time.deltaTime;
+        slider.value = parkingTimeCurrent;
         //Debug.Log(parkingTimeCurrent);
     }
 
