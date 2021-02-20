@@ -1719,6 +1719,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e4da35f51388664b9cc833440d1123b, type: 3}
+--- !u!1 &155431034 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7362828180177185229, guid: aff91e5a28f17ec41aeb5e9053160ff2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1758613601}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &158261216 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8a534218d43e43f4ba7406ab86f30ae5,
@@ -8930,9 +8936,9 @@ GameObject:
   - component: {fileID: 939149379}
   - component: {fileID: 939149378}
   - component: {fileID: 939149377}
-  - component: {fileID: 939149376}
   - component: {fileID: 939149375}
   - component: {fileID: 939149374}
+  - component: {fileID: 939149376}
   m_Layer: 0
   m_Name: Main Camera (1)
   m_TagString: MainCamera
@@ -8962,8 +8968,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -9015,9 +9021,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 939149373}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa19fb94f697a9e459a22687c63f7194, type: 3}
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 2e275701ea3472b489056a8458d8e198, type: 2}
 --- !u!81 &939149377
 AudioListener:
   m_ObjectHideFlags: 0
@@ -11116,6 +11127,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4520247953740166399, guid: 933936c7bd6b2694e9622f8fe3e91cae,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5099181806082297382, guid: 933936c7bd6b2694e9622f8fe3e91cae,
         type: 3}
       propertyPath: m_Sprite
@@ -11194,7 +11210,7 @@ PrefabInstance:
     - target: {fileID: 5099181807097308091, guid: 933936c7bd6b2694e9622f8fe3e91cae,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5099181807097347685, guid: 933936c7bd6b2694e9622f8fe3e91cae,
         type: 3}
@@ -11235,6 +11251,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Controls
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099181807672793565, guid: 933936c7bd6b2694e9622f8fe3e91cae,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5099181807672793565, guid: 933936c7bd6b2694e9622f8fe3e91cae,
         type: 3}
@@ -11306,6 +11327,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5399361390569149674, guid: 933936c7bd6b2694e9622f8fe3e91cae,
+        type: 3}
+      propertyPath: goal
+      value: 
+      objectReference: {fileID: 155431034}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 933936c7bd6b2694e9622f8fe3e91cae, type: 3}
 --- !u!111 &1206434759 stripped
@@ -18928,6 +18954,7 @@ GameObject:
   - component: {fileID: 2125355338}
   - component: {fileID: 2125355337}
   - component: {fileID: 2125355336}
+  - component: {fileID: 2125355339}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -18982,6 +19009,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2125355339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125355335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 0}
 --- !u!1001 &2127332820
 PrefabInstance:
   m_ObjectHideFlags: 0
