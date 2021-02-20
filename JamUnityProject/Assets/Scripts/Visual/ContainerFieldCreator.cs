@@ -27,7 +27,6 @@ public class ContainerFieldCreator : MonoBehaviour
     private GameObject[,,] fieldObjects;
 
 
-
     private void Awake()
     {
         fieldObjects = new GameObject[size.x, size.y, size.z];
@@ -132,7 +131,7 @@ public class ContainerFieldCreator : MonoBehaviour
         }
     }
 
-    void UpdateField(Vector3Int index)
+    void UpdateField(Vector3Int index) // Not currently in Use
     {
         fieldObjects[index.x, index.y, index.z].transform.position = GetObjectPosition(index) + gameObject.transform.position;
     }
@@ -149,25 +148,24 @@ public class ContainerFieldCreator : MonoBehaviour
     {
         GameObject instance = Instantiate(objectReference);
 
+        instance.transform.position = position + gameObject.transform.position;
+
+        instance.transform.rotation = gameObject.transform.rotation;
+
         instance.transform.parent = gameObject.transform;
-
-        Vector3 pos = gameObject.transform.position + position;
-        pos += objectSize / 2;
-
-        instance.transform.position = pos;
 
         return instance;
     }
 
     Vector3 GetObjectPosition(Vector3 fieldPosition)
     {
-        //Vector3 startingPoint = gameObject.transform.position;
-
-        float x = objectSize.x * fieldPosition.x;
-        float y = objectSize.y * fieldPosition.y;
-        float z = objectSize.z * fieldPosition.z;
+        float x = objectSize.x * fieldPosition.x + objectSize.x / 2;
+        float y = objectSize.y * fieldPosition.y + objectSize.y / 2;
+        float z = objectSize.z * fieldPosition.z + objectSize.z / 2;
 
         Vector3 position = new Vector3(x, y, z);
+
+        position = gameObject.transform.rotation * position;
 
         return position;
     }
@@ -178,7 +176,10 @@ public class ContainerFieldCreator : MonoBehaviour
 
         Vector3 boxPosition;
 
-        boxPosition = boxSize / 2 + gameObject.transform.position;
+        boxPosition = boxSize / 2;
+
+        Matrix4x4 rotationMatrix = Matrix4x4.TRS(gameObject.transform.position, gameObject.transform.rotation, gameObject.transform.lossyScale);
+        Gizmos.matrix = rotationMatrix;
 
         Gizmos.color = new Color(1, 0, 0, 0.5f);
         Gizmos.DrawCube(boxPosition, boxSize);
