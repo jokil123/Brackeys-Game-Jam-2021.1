@@ -100,6 +100,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WallWoCorrugated Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 90caf4c2a6981034aa4366ad5a27c217,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 3786791967287972283, guid: 90caf4c2a6981034aa4366ad5a27c217,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
