@@ -9062,7 +9062,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 10
+  far clip plane: 1000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -12493,7 +12493,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 25
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 32819781}
   m_Follow: {fileID: 32819781}
@@ -12501,12 +12501,12 @@ MonoBehaviour:
     FieldOfView: 60
     OrthographicSize: 5
     NearClipPlane: 0.3
-    FarClipPlane: 10
+    FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.4771929, y: 1}
+    m_SensorSize: {x: 4.611406, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
