@@ -36,6 +36,12 @@ public class PlayerController : MonoBehaviour
         {
             Thrust(Input.GetAxis("Vertical") * speed);
             TurnTorque(Input.GetAxis("Horizontal") * turnspeed);
+        } else
+        {
+            if (soundVolume > 0)
+            {
+                soundVolume -= 0.1f;
+            }
         }
         shipDrivingSound.volume = soundVolume;
     }
