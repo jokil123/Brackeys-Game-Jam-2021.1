@@ -771,7 +771,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Steer Boat - [LEFT] / [RIGHT]
+  m_Text: Steer Boat - [LEFT] / [RIGHT] / [A] / [D]
 --- !u!1 &1903940480222014026
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,7 +913,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Thrust - [UP] / [DOWN]
+  m_Text: Thrust - [UP] / [DOWN] / [W] / [S]
 --- !u!1 &2428418858279854446
 GameObject:
   m_ObjectHideFlags: 0
