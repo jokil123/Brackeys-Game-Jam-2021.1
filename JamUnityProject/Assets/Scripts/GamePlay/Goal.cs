@@ -17,6 +17,10 @@ public class Goal : MonoBehaviour
     private Animation clearAnim;
 
     [SerializeField]
+    private AudioSource clearSound;
+    private bool playClearSound = true;
+
+    [SerializeField]
     private Animation goalSlideranim;
 
     [SerializeField]
@@ -104,6 +108,11 @@ public class Goal : MonoBehaviour
     {
         Debug.Log("Level Win");
         clearAnim.Play();
+        if (!clearSound.isPlaying && playClearSound)
+        {
+            clearSound.Play();
+            playClearSound = false;
+        }
         StartCoroutine(LoadNextScene());
     }
 
