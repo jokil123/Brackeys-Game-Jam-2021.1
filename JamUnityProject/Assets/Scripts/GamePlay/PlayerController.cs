@@ -20,6 +20,11 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float turnspeed;
 
+    private float soundVolume = 0f;
+
+    [SerializeField]
+    private AudioSource shipDrivingSound;
+
     void Awake()
     {
         playerRigidbody = gameObject.GetComponent<Rigidbody>();
@@ -32,6 +37,7 @@ public class PlayerController : MonoBehaviour
             Thrust(Input.GetAxis("Vertical") * speed);
             TurnTorque(Input.GetAxis("Horizontal") * turnspeed);
         }
+        shipDrivingSound.volume = soundVolume;
     }
 
     void Thrust(float strength)
@@ -50,10 +56,20 @@ public class PlayerController : MonoBehaviour
             {
                 particles.startSpeed = -particleSpeed;
             }
+
+            if (soundVolume < 1)
+            {
+                soundVolume += 0.1f;
+            }
         }
         else
         {
             particles.emissionRate = 0;
+
+            if (soundVolume > 0)
+            {
+                soundVolume -= 0.1f;
+            }
         }
 
     }

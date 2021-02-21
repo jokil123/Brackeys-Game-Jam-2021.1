@@ -11,6 +11,8 @@ public class GameController : MonoBehaviour
     public CinemachineVirtualCamera cinemachine;
     public bool controlIsEnabled = true;
 
+    public AudioSource switchShipSound;
+
     private void Awake()
     {
         GameMaster.gameController = this;
@@ -31,6 +33,7 @@ public class GameController : MonoBehaviour
     {
         playerShips[shipIndex].GetComponent<PlayerController>().isActive = false;
         playerShips[shipIndex].GetComponent<PlayerController>().particles.emissionRate = 0;
+        switchShipSound.Play();
         shipIndex++;
         if (shipIndex >= playerShips.Count)
         {
