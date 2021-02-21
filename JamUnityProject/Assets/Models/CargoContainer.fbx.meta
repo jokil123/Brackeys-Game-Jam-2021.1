@@ -3,7 +3,17 @@ guid: c63f27c9e5373724e9edd7534600e541
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Container
+    second: {fileID: 2100000, guid: 56d0d9707fb215948a994da11c409bbc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ContainerRelief
+    second: {fileID: 2100000, guid: 39a4f17dd5111224397873100471cea3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -85,7 +95,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.0003540239
+    globalScale: 0.03540239
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
