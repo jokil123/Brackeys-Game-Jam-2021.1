@@ -9,7 +9,7 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
-        if (Application.isEditor)
+        if (!Application.isEditor)
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
@@ -23,7 +23,7 @@ public class Menu : MonoBehaviour
         {
             menu.SetActive(!menu.activeSelf);
 
-            if (Application.isEditor)
+            if (!Application.isEditor)
             {
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;

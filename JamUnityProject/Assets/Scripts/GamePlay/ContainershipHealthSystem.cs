@@ -27,6 +27,7 @@ public class ContainershipHealthSystem : MonoBehaviour
     public Slider slider;
     public Slider secondarySlider;
     public Text hpText;
+    public Text hpTextSecondary;
     public Animation gameOverAnim;
 
     void Start()
@@ -47,6 +48,7 @@ public class ContainershipHealthSystem : MonoBehaviour
     {
         slider.value = Health;
         hpText.text = $"HP: {Health}";
+        hpTextSecondary.text = $"HP: {Health}";
     }
 
     void GameOver()
