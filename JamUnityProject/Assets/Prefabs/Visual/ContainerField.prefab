@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2657807808027530081}
   - component: {fileID: 2657807808027530094}
   - component: {fileID: 1112666045709868943}
+  - component: {fileID: 4939640586001170808}
   m_Layer: 0
   m_Name: ContainerField
   m_TagString: Untagged
@@ -47,8 +48,6 @@ MonoBehaviour:
   size: {x: 15, y: 3, z: 20}
   objectSize: {x: 0.4521616, y: 0.1670652, z: 0.1610932}
   layerMultiplier: 0.1
-  objectReference: {fileID: 8947841885915437442, guid: 636416d4f7533b840b9cad387b09caef,
-    type: 3}
 --- !u!114 &1112666045709868943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,3 +65,23 @@ MonoBehaviour:
   offset: 0.07
   width: 0.05
   material: {fileID: 2100000, guid: de4561492b43e154ab134ac5004ed227, type: 2}
+--- !u!114 &4939640586001170808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2657807808027530095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2c446d2c1d2e57428df5652fc1de4d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modelPieceMeshes:
+  - {fileID: -6794043251028474524, guid: c63f27c9e5373724e9edd7534600e541, type: 3}
+  - {fileID: 5569449905038027452, guid: c63f27c9e5373724e9edd7534600e541, type: 3}
+  - {fileID: -5301840646740982140, guid: c63f27c9e5373724e9edd7534600e541, type: 3}
+  modelPieceMaterials:
+  - {fileID: 2100000, guid: 39a4f17dd5111224397873100471cea3, type: 2}
+  - {fileID: 2100000, guid: 56d0d9707fb215948a994da11c409bbc, type: 2}
+  - {fileID: 2100000, guid: 5d51df4910c1b47409f6629b6b9af773, type: 2}

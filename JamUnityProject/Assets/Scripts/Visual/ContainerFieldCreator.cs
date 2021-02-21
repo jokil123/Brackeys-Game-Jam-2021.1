@@ -2,61 +2,147 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum LoopMethods
-{
-    UpdateField,
-    GenerateField,
-    DeleteRandom,
-    MakeHollow
-}
-
 public class ContainerFieldCreator : MonoBehaviour
 {
-    [SerializeField]
-    private Vector3Int size;
+    public Vector3Int size;
 
-    [SerializeField]
-    private Vector3 objectSize;
+    public Vector3 objectSize;
 
-    [SerializeField]
-    private float layerMultiplier;
-
-    [SerializeField]
-    private GameObject objectReference;
-
-    private GameObject[,,] fieldObjects;
+    public float layerMultiplier;
 
 
-    private void Awake()
+
+    private bool[,,] fieldWeight;
+
+    private List<Matrix4x4> matricies = new List<Matrix4x4>();
+
+
+    private void Start()
     {
-        fieldObjects = new GameObject[size.x, size.y, size.z];
+        fieldWeight = new bool[size.x, size.y, size.z];
 
-        LoopDaLoop(LoopMethods.GenerateField);
-        LoopDaLoop(LoopMethods.DeleteRandom);
-        LoopDaLoop(LoopMethods.MakeHollow);
+        LoopIt(LoopMethods.TrueField);
+        LoopIt(LoopMethods.DisableRandom);
+        LoopIt(LoopMethods.MakeHollow);
+        matricies = GeneratePositionMatricies(fieldWeight);
     }
 
-    void DeleteFromField(Vector3Int positionIndex)
+    private void Update()
     {
-        for (int iY = positionIndex.y; iY < size.y; iY++)
+        gameObject.GetComponent<BatchInstancer>().Instance(matricies);
+    }
+
+
+    List<Matrix4x4> GeneratePositionMatricies(bool[,,] field)
+    {
+        List<Matrix4x4> outputList = new List<Matrix4x4>();
+
+        for (int iX = 0; iX < field.GetLength(0); iX++)
         {
-            Destroy(fieldObjects[positionIndex.x, iY, positionIndex.z]);
-            fieldObjects[positionIndex.x, iY, positionIndex.z] = null;
+            for (int iY = 0; iY < field.GetLength(1); iY++)
+            {
+                for (int iZ = 0; iZ < field.GetLength(2); iZ++)
+                {
+                    if (fieldWeight[iX, iY, iZ])
+                    {
+                        float posX = objectSize.x * iX + objectSize.x / 2;
+                        float posY = objectSize.y * iY + objectSize.y / 2;
+                        float posZ = objectSize.z * iZ + objectSize.z / 2;
+
+                        Vector3 localPosition = new Vector3(posX, posY, posZ);
+
+                        Vector3 rotatedLocalPosition = gameObject.transform.rotation * localPosition;
+
+                        Vector3 position = gameObject.transform.position + rotatedLocalPosition;
+
+                        Quaternion rotation = gameObject.transform.rotation;
+
+                        Vector3 scale = gameObject.transform.localScale;
+
+
+                        Matrix4x4 objectTRS = Matrix4x4.TRS(position, rotation, scale);
+
+                        outputList.Add(objectTRS);
+                    }
+                }
+            }
         }
+
+        return outputList;
     }
 
-    void DeleteRandom(Vector3Int index)
+
+    void TrueField(Vector3Int position)
     {
-        float threshold = Mathf.Pow(1f / ((float)index.y + 1), size.y * layerMultiplier);
+        fieldWeight[position.x, position.y, position.z] = true;
+    }
+
+
+    void DisableRandom(Vector3Int position)
+    {
+        float threshold = Mathf.Pow(1f / ((float)position.y + 1), position.y * layerMultiplier);
 
         if (Random.Range(0f, 1f) > threshold)
         {
-            DeleteFromField(index);
+            DeleteFromField(position);
         }
     }
 
 
-    void LoopDaLoop(LoopMethods method)
+    void DeleteFromField(Vector3Int position)
+    {
+        for (int iY = position.y; iY < size.y; iY++)
+        {
+            fieldWeight[position.x, iY, position.z] = false;
+        }
+    }
+
+
+    void MakeHollow(Vector3Int position)
+    {
+        bool canMakeHollow = true;
+
+        bool[] containerDirections = new bool[6];
+
+        containerDirections[0] = IsThereAContainer(position + Vector3Int.up);
+        containerDirections[1] = IsThereAContainer(position + Vector3Int.down);
+        containerDirections[2] = IsThereAContainer(position + Vector3Int.right);
+        containerDirections[3] = IsThereAContainer(position + Vector3Int.left);
+        containerDirections[4] = IsThereAContainer(position + Vector3Int.forward);
+        containerDirections[5] = IsThereAContainer(position + Vector3Int.back);
+
+        foreach (bool item in containerDirections)
+        {
+            if (!item)
+            {
+                canMakeHollow = false;
+            }
+        }
+
+        if (canMakeHollow)
+        {
+            fieldWeight[position.x, position.y, position.z] = false; ;
+        }
+    }
+
+    bool IsThereAContainer(Vector3Int position)
+    {
+        if (position.x <= size.x - 1 && position.y <= size.y - 1 && position.z <= size.z - 1)
+        {
+            if (position.x >= 0 && position.y >= 0 && position.z >= 0)
+            {
+                if (fieldWeight[position.x, position.y, position.z])
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
+
+    void LoopIt(LoopMethods method)
     {
         for (int iX = 0; iX < size.x; iX++)
         {
@@ -68,62 +154,14 @@ public class ContainerFieldCreator : MonoBehaviour
 
                     switch (method)
                     {
-                        case LoopMethods.UpdateField:
-                            if (fieldObjects[iX, iY, iZ] != null)
-                            {
-                                UpdateField(index);
-                            }
+                        case LoopMethods.TrueField:
+                            TrueField(index);
                             break;
-                        case LoopMethods.GenerateField:
-                            GenerateField(index);
-                            break;
-                        case LoopMethods.DeleteRandom:
-                            if (fieldObjects[iX, iY, iZ] != null)
-                            {
-                                DeleteRandom(index);
-                            }
+                        case LoopMethods.DisableRandom:
+                            DisableRandom(index);
                             break;
                         case LoopMethods.MakeHollow:
-                            bool canMakeHollow = true;
-
-                            bool[] containerDirections = new bool[6];
-
-                            containerDirections[0] = IsThereAContainer(index + Vector3Int.up);
-                            containerDirections[1] = IsThereAContainer(index + Vector3Int.down);
-                            containerDirections[2] = IsThereAContainer(index + Vector3Int.right);
-                            containerDirections[3] = IsThereAContainer(index + Vector3Int.left);
-                            containerDirections[4] = IsThereAContainer(index + Vector3Int.forward);
-                            containerDirections[5] = IsThereAContainer(index + Vector3Int.back);
-
-                            foreach (bool item in containerDirections)
-                            {
-                                if (!item)
-                                {
-                                    canMakeHollow = false;
-                                }
-                            }
-
-                            bool IsThereAContainer(Vector3Int positionIndex)
-                            {
-                                if (positionIndex.x <= size.x - 1 && positionIndex.y <= size.y - 1 && positionIndex.z <= size.z - 1)
-                                {
-                                    if (positionIndex.x >= 0 && positionIndex.y >= 0 && positionIndex.z >= 0)
-                                    {
-                                        if (fieldObjects[positionIndex.x, positionIndex.y, positionIndex.z] != null)
-                                        {
-                                            return true;
-                                        }
-                                    }
-                                }
-                                return false;
-                            }
-
-
-                            if (canMakeHollow)
-                            {
-                                Destroy(fieldObjects[index.x, index.y, index.z]);
-                            }
-
+                            MakeHollow(index);
                             break;
                     }
                 }
@@ -131,44 +169,7 @@ public class ContainerFieldCreator : MonoBehaviour
         }
     }
 
-    void UpdateField(Vector3Int index) // Not currently in Use
-    {
-        fieldObjects[index.x, index.y, index.z].transform.position = GetObjectPosition(index) + gameObject.transform.position;
-    }
 
-    void GenerateField(Vector3Int index)
-    {
-        fieldObjects[index.x, index.y, index.z] = GenerateObject(GetObjectPosition(index));
-    }
-
-
-
-
-    GameObject GenerateObject(Vector3 position)
-    {
-        GameObject instance = Instantiate(objectReference);
-
-        instance.transform.position = position + gameObject.transform.position;
-
-        instance.transform.rotation = gameObject.transform.rotation;
-
-        instance.transform.parent = gameObject.transform;
-
-        return instance;
-    }
-
-    Vector3 GetObjectPosition(Vector3 fieldPosition)
-    {
-        float x = objectSize.x * fieldPosition.x + objectSize.x / 2;
-        float y = objectSize.y * fieldPosition.y + objectSize.y / 2;
-        float z = objectSize.z * fieldPosition.z + objectSize.z / 2;
-
-        Vector3 position = new Vector3(x, y, z);
-
-        position = gameObject.transform.rotation * position;
-
-        return position;
-    }
 
     private void OnDrawGizmos()
     {
@@ -195,4 +196,12 @@ public class ContainerFieldCreator : MonoBehaviour
 
         return boxSize;
     }
+}
+
+
+public enum LoopMethods
+{
+    TrueField,
+    DisableRandom,
+    MakeHollow
 }

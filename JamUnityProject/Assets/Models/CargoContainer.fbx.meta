@@ -14,6 +14,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: ContainerRelief
     second: {fileID: 2100000, guid: 39a4f17dd5111224397873100471cea3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lock
+    second: {fileID: 2100000, guid: 5d51df4910c1b47409f6629b6b9af773, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -95,7 +100,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.03540239
+    globalScale: 0.0003540239
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
