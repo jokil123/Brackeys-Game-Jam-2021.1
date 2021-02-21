@@ -29,6 +29,7 @@ public class ContainershipHealthSystem : MonoBehaviour
     public Text hpText;
     public Text hpTextSecondary;
     public Animation gameOverAnim;
+    public AudioSource impactSound;
 
     void Start()
     {
@@ -64,6 +65,7 @@ public class ContainershipHealthSystem : MonoBehaviour
         if (collision.gameObject.tag == "Obstacle" || collision.gameObject.tag == "Player")
         {
             Health -= 10;
+            impactSound.Play();
         }
     }
 
